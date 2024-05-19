@@ -59,5 +59,6 @@ El renderizado es comparar los nuevos cambios en el DOM virtual con el DOM real,
 ## ¿Qué es un componente?
 
 Son pequeñas piezas de código encapsuladas re-utilizable que pueden tener estado o no, estos hacen un trabajo específico.  
+También pueden tener un estado o no.  
 Es una función que crea un elemento.  
 Los nombres de los componentes siempre tiene que ser nombrados con el tipo de notación **“PascalCase”.**
