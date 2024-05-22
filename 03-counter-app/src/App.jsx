@@ -1,11 +1,9 @@
-import "./App.scss";
+import { FirstApp } from "./FirstApp";
 
-function App() {
+export const App = () => {
 	return (
 		<>
-			<h2>Hello</h2>
+			<FirstApp />
 		</>
 	);
-}
-
-export default App;
+};
