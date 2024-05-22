@@ -58,7 +58,25 @@ El renderizado es comparar los nuevos cambios en el DOM virtual con el DOM real,
 
 ## ¿Qué es un componente?
 
-Son pequeñas piezas de código encapsuladas re-utilizable que pueden tener estado o no, estos hacen un trabajo específico.  
-También pueden tener un estado o no.  
-Es una función que crea un elemento.  
-Los nombres de los componentes siempre tiene que ser nombrados con el tipo de notación **“PascalCase”.**
+Son pequeñas piezas de código encapsuladas y reutilizable que pueden tener estado o no, estos hacen un trabajo específico.  
+Mediante funciones o clases de JavaScript podemos crear componentes.  
+**_Componente funcional_**: Creado mediante una función.  
+**_Componente de clase_**: Creado mediante una clase.  
+Los componentes pueden ser:
+
+| Componente funcional  | Componente de clase |
+| --------------------- | ------------------- |
+| Comp. funcional       | Comp. de clase      |
+| Comp. de presentación | Comp. contenedor    |
+| Comp. sin estado      | Comp. con estado    |
+| Comp. tonto           | Comp. inteligente   |
+
+**_Nombrado de componentes_**:
+
+| Notación     | Nombre componente |
+| ------------ | ----------------- |
+|              | FirApp            |
+|              | Loading           |
+| `PascalCase` | Gallery           |
+|              | Picture           |
+|              | RegisterForm      |
