@@ -1,8 +1,9 @@
 # REACT
 
-## ¿Qué es REACT?
+## [¿Qué es REACT?](https://www.reactjs.wiki/que-es-react)
 
-React es un biblioteca de JavaScript desarrollada por Facebook para construir interfaces de usuario (UI).  
+Es un biblioteca de JavaScript de código abierto, desarrollada por Facebook para construir interfaces de usuario (UI).  
+Esta basada en la componetización de UI (se divide en componentes).  
 Es especialmente útil para desarrollar _aplicaciones de página única_ (**SPA**, por sus siglas en ingles), donde puedes interactuar con la aplicación sin necesidad de recargar la página.  
 _**Ejemplo de SPA**_:
 
@@ -18,34 +19,6 @@ _**Ejemplo de SPA**_:
 - Smart TV
 - VR (Realidad Virtual) -> React 360
 
-## React CARACTERÍSTICAS
-
-- Hace uso de **Componentes Reutilizables**
-- Utiliza **JSX**(JavaScript XML)
-- Virtual DOM
-- Data Binding Unidireccional
-- Extensa comunidad
-
-## ¿Qué es JSX?
-
-Es una extensión de sintaxis de JavaScript que permite mezclar JS y HTML (XML), de ahí su nombre _JavaScript XML_.  
-El código JSX es compilado a JS por un **Transpiler**(Transpilador), como BabelJS.  
-Podemos insertar expresiones de JavaScript en nuestro código JSX.
-
-```
-let name = “Simon”;
-<h1>{name}</h1>
-```
-
-## [¿Qué es el Virtual DOM?](https://youtu.be/EJgNlZpSEBI?si=i_PlvxdpfuDap6QI)
-
-El DOM virtual (VDOM) es un concepto de programación en el que una representación virtual de la interfaz de usuario se mantiene en la memoria y se sincroniza con el DOM "real" mediante un proceso llamado reconciliación.  
-Es una abstracción del DOM HTML y es más liviano ya que no implica interacción directa con la API DOM del navegador.  
-Es un copia muy ligera del DOM (Document Obect Model) real que se guarda en memoria. Esto quiere decir que React hace una copia del DOM real, pero con muy pocas propiedades (las propiedades mas utilizadas de los elementos del DOM real).  
-Para realizar cambios en el DOM, React hace una comparación entre el DOM real y Virtual DOM, para no volver a renderizar lo mismo o mínimos cambios.  
-React solo actualiza las partes que han cambiado, para evitar operaciones muy costosas.  
-El renderizado es comparar los nuevos cambios en el DOM virtual con el DOM real, para identificar que cambios sean producido, para aplicarlo.
-
 ## ¿Por qué REACT?
 
 - Mucha demanda laboral
@@ -56,10 +29,20 @@ El renderizado es comparar los nuevos cambios en el DOM virtual con el DOM real,
 - Comunidad bastante grande y activa.
 - Actualizaciones y futuro cercano a la web.
 
+## [React CARACTERÍSTICAS](https://www.reactjs.wiki/cuales-son-las-caracteristicas-principales-de-react)
+
+- Componentes
+- Virtual DOM
+- Declarativo
+- Data Binding Unidireccional
+- Utiliza **JSX**(JavaScript XML)
+- Universal
+- Extensa comunidad
+
 ## ¿Qué es un componente?
 
-Son pequeñas piezas de código encapsuladas y reutilizable que pueden tener estado o no, estos hacen un trabajo específico.  
-Mediante funciones o clases de JavaScript podemos crear componentes.  
+Es una pieza de código que renderiza una parte de la interfaz, estos pueden reutilizados, parametrizados y puede tener estado propio o no .  
+Los componentes de React se crean usando funciones o clases.  
 **_Componente funcional_**: Creado mediante una función.  
 **_Componente de clase_**: Creado mediante una clase.  
 Los componentes pueden ser:
@@ -80,3 +63,101 @@ Los componentes pueden ser:
 | `PascalCase` | Gallery           |
 |              | Picture           |
 |              | RegisterForm      |
+
+## [¿Qué es el Virtual DOM?](https://youtu.be/EJgNlZpSEBI?si=i_PlvxdpfuDap6QI)
+
+El `DOM virtual` o `virtual DOM`(VDOM) es una representación en memoria del `DOM real`.  
+Cuando el estado de un componente cambia, React vuelve a renderizar la interfaz, pero en lugar de modificar el `DOM real`, React modifica el virtual DOM y, a continuación, sincroniza el `virtual DOM` con el `DOM real` mediante un proceso llamado "reconcilización".  
+Es una abstracción del `DOM HTML`, es más liviano ya que no implica interacción directa con la API DOM del navegador.  
+React solo actualiza las partes que han cambiado, para evitar operaciones muy costosas.
+
+## React es declarativo. ¿Qué lo hace declarativo?
+
+No le indicamos las instrucciones para renderizar la interfaz.  
+Es su lugar le indicamos que debe renderizar y React lo renderiza.
+
+**Declarativo**
+
+```
+const elementos = <h1>Hello, world</h1>
+```
+
+**Imperativo**
+
+```
+const element = document.createElement("h1")
+element.innerHTML = "Hello, world"
+```
+
+## ¿Qué es JSX?
+
+Es una extensión de JavaScript que permite mezclar JS y HTML (XML), de ahí su nombre _JavaScript XML_.  
+El código JSX es compilado a JS por un **Transpiler**(Transpilador o Compilador), como BabelJS, SWC.  
+Podemos insertar expresiones de JavaScript en nuestro código JSX.
+
+```
+let name = “Simon”;
+
+<h1>{name}</h1>
+```
+
+## [¿Diferencia entre componente y elemento en React?](https://www.reactjs.wiki/cual-es-la-diferencia-entre-componente-y-elemento-en-react)
+
+**Componente**: Es una función o clase que recibe props y retorna un elemento.  
+**Elemento**: Es un objeto que representa un _nodo_ del DOM o instancia de un componente.
+
+## Fragmentos
+
+Los Fragmentos te permiten agrupar una lista de hijos sin agregar nodos extra al DOM.  
+Forma corta: `<></>`  
+Forma larga: `<React.Fragment></React.Fragment>`
+
+```
+const Gallery = () => {
+  return (
+    <>
+      <Picture/>
+      <Picture/>
+    </>
+  )
+}
+```
+
+## Props
+
+Es un objeto que contiene las propiedades de un componente.  
+Las propiedades son datos que se pueden pasar entre componentes (de padre a hijo).  
+Son una forma de parametrizar un componente, al igual que una función.  
+Podemos pasar cualquier tipo de datos, incluso otros componentes(children).
+
+```
+const FirstApp = (props) => {
+	return (
+		<>
+			<h1>{props.title}</h1>
+			{props.children} // <h2>Conociendo las props</h2>
+		</>
+	);
+};
+
+<FirstApp title="FirstApp">
+  <h2>Conociendo las props</h2>
+</FirstApp>
+```
+
+También podemos desestructurar las props.
+
+```
+const FirstApp = ({title, children}) => {
+	return (
+		<>
+			<h1>{title}</h1>
+			{children} // <h2>Conociendo las props</h2>
+		</>
+	);
+};
+
+<FirstApp title="FirstApp">
+  <h2>Conociendo las props</h2>
+</FirstApp>
+```
