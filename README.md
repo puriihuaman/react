@@ -125,10 +125,10 @@ const Gallery = () => {
 
 ## Props
 
-Es un objeto que contiene las propiedades de un componente.  
+Es un objeto que contiene las propiedades de un componente, estos `inmutables` y no se puede modificar desde un componente hijo.  
 Las propiedades son datos que se pueden pasar entre componentes (de padre a hijo).  
 Son una forma de parametrizar un componente, al igual que una función.  
-Podemos pasar cualquier tipo de datos, incluso otros componentes(children).
+Podemos pasar cualquier tipo de datos, incluso otros componentes (children).
 
 ```
 const FirstApp = (props) => {
@@ -160,4 +160,87 @@ const FirstApp = ({title, children}) => {
 <FirstApp title="FirstApp">
   <h2>Conociendo las props</h2>
 </FirstApp>
+```
+
+### Props - PropTypes
+
+Podemos definir el tipo de `propTypes` que son aceptados por un componente (string, number, object, func, etc).  
+Estos tipos son comprobados durante el renderizado y el desarrollo de la app, no en producción.  
+Para usar PropTypes hacemos usado de la libería`prop-types`
+
+```
+npm install prop-types -E
+```
+
+Usando propTypes
+
+```
+import PropTypes from "prop-types"
+
+const App = ({message}) => {
+	return (
+		<>
+			<h1>{message}</h1>
+		</>
+	)
+}
+
+App.propTypes = {
+	// message: PropTypes.string; // "opcional"
+	message: PropTypes.string.isRequired, // obligatorio
+}
+
+```
+
+### Props - DefaultProps
+
+Podemos tener `defaultProps` de las props definidas, estas son usadas si no enviamos las props.  
+Las `defaultProps` se ejecutan antes que nuestras `props`.  
+Podemos hacer de las `defaultProps` sin tener definido los `propTypes`.
+
+```
+import PropTypes from "prop-types"
+
+const App = ({message}) => {
+	return (
+		<>
+			<h1>{message}</h1>
+		</>
+	)
+}
+
+App.propTypes = {
+	// message: PropTypes.string; // "opcional"
+	message: PropTypes.string.isRequired, // obligatorio
+}
+
+App.defaultProps = {
+	message: "Bienvenido al curso se React"
+}
+
+```
+
+### Prop children
+
+Es una `prop` especial que se pasa a los componentes.  
+Es un objeto que envuelve un componente.
+La `prop children` puede ser componentes o elemento de react.
+
+Ejemplo:
+
+```
+// declaración
+const Card = ({ title, children }) => {
+	return (
+		<>
+			<h2>{title}</h2>
+			<div>{ children }</div>
+		</>
+	)
+}
+
+// uso
+<Card title="Título de la card">
+	<p>Contenido de la card</p> // children
+</Card>
 ```
