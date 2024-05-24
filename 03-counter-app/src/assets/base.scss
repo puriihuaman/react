@@ -1,3 +1,22 @@
 .title {
 	color: var(--dodger-blue-500);
 }
+
+button {
+	border: none;
+	border-radius: 0.35rem;
+	padding: 0.5em 1em;
+	font-size: 80%;
+	font-family: inherit;
+	background-color: var(--dodger-blue-500);
+	cursor: pointer;
+	transform: scale(1);
+	transition:
+		transform,
+		background-color,
+		ease-in 300ms;
+
+	&:active {
+		transform: scale(0.95);
+	}
+}
